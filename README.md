@@ -1,4 +1,4 @@
-# Velocity
+# VelocityNT Recast
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/PaperMC/Velocity/gradle.yml)](https://papermc.io/downloads/velocity)
 [![Join our Discord](https://img.shields.io/discord/289587909051416579.svg?logo=discord&label=)](https://discord.gg/papermc)
@@ -7,6 +7,50 @@ A Minecraft server proxy with unparalleled server support, scalability,
 and flexibility.
 
 Velocity is licensed under the GPLv3 license.
+
+## About VelocityNT Recast
+
+Its predecessor was my other Velocity Fork, [VelocityNT](https://github.com/404Setup/VelocityNT).
+
+It died due to poor latency performance and a messy code base.
+
+For VelocityNT Recast, its goal is the same as VelocityNT, which is to provide a better experience for Windows users.
+
+## RecastLib License
+
+- [RecastXZ](https://github.com/404Setup/RecastXZ) 2025-2026 404Setup. All rights reserved. Source code is
+  licensed under a MPL-2.0 License.
+- [RecastSSL](https://github.com/404Setup/RecastSSL): 2025-2026 404Setup. All rights reserved. Source code is
+  licensed under a BSD-3-Clause License.
+
+## Use RecastLIB
+
+RecastLib consists of the following parts:
+
+- Velocity Native (MacOS/Linux Compress/Crypt)
+- RecastXZ Native (Windows Compress)
+- RecastSSL Native (Windows Crypt)
+
+```groovy
+repositories {
+    mavenCentral()
+    maven {
+        name = 'VelocityRecast'
+        url = 'https://mvn.pkg.one/snapshots'
+    }
+    // or
+    maven {
+        name = 'VelocityRecast'
+        url = 'https://mvnc.pkg.one/snapshots'
+    }
+}
+
+dependencies {
+    implementation("one.pkg.velocity_rc:velocity-native:3.4.0-SNAPSHOT") {
+        exclude group: 'io.netty'
+    }
+}
+```
 
 ## Goals
 
@@ -18,7 +62,7 @@ Velocity is licensed under the GPLv3 license.
 * First-class support for Paper, Sponge, Fabric and Forge. (Other implementations
   may work, but we make every endeavor to support these server implementations
   specifically.)
-  
+
 ## Building
 
 Velocity is built with [Gradle](https://gradle.org). We recommend using the

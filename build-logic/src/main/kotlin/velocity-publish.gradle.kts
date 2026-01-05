@@ -6,10 +6,13 @@ plugins {
 extensions.configure<PublishingExtension> {
     repositories {
         maven {
-            credentials(PasswordCredentials::class.java)
+            credentials(PasswordCredentials::class.java) {
+                username = System.getenv("REPO_USER")
+                password = System.getenv("REPO_PASS")
+            }
 
             name = if (version.toString().endsWith("SNAPSHOT")) "paperSnapshots" else "paper" // "paper" is seemingly not defined
-            val base = "https://artifactory.papermc.io/artifactory"
+            val base = "https://mvn.pkg.one"
             val releasesRepoUrl = "$base/releases/"
             val snapshotsRepoUrl = "$base/snapshots/"
             setUrl(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)

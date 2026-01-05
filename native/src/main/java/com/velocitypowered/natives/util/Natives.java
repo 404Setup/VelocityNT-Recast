@@ -80,6 +80,16 @@ public class Natives {
 
   public static final NativeCodeLoader<VelocityCompressorFactory> compress = new NativeCodeLoader<>(
       ImmutableList.of(
+          new NativeCodeLoader.Variant<>(NativeConstraints.WINDOWS_X86_64,
+            copyAndLoadNative("/windows_x86_64/recastxz.dll"),
+              "RecastXZ 3 (Windows x86_64)",
+              LibdeflateVelocityCompressor.FACTORY), // compiled with Windows 26120.4441 && MSVC 14
+
+          new NativeCodeLoader.Variant<>(NativeConstraints.WINDOWS_AARCH64,
+            copyAndLoadNative("/windows_aarch64/recastxz.dll"),
+              "RecastXZ 3 (Windows aarch64)",
+              LibdeflateVelocityCompressor.FACTORY), // compiled with Windows 26120.4441 && MSVC 14
+
           new NativeCodeLoader.Variant<>(NativeConstraints.LINUX_X86_64,
               copyAndLoadNative("/linux_x86_64/velocity-compress.so"),
               "libdeflate (Linux x86_64)",
@@ -109,6 +119,14 @@ public class Natives {
 
   public static final NativeCodeLoader<VelocityCipherFactory> cipher = new NativeCodeLoader<>(
       ImmutableList.of(
+          new NativeCodeLoader.Variant<>(NativeConstraints.WINDOWS_X86_64,
+              copyAndLoadNative("/windows_x86_64/recastssl.dll"),
+              "RecastSSL 2 (Windows x86_64)", NativeVelocityCipher.FACTORY), // compiled with Windows 26120.4441 && MSVC 14
+
+          new NativeCodeLoader.Variant<>(NativeConstraints.WINDOWS_AARCH64,
+              copyAndLoadNative("/windows_aarch64/recastssl.dll"),
+              "RecastSSL 2 (Windows aarch64)", NativeVelocityCipher.FACTORY), // compiled with Windows 26120.4441 && MSVC 14
+
           new NativeCodeLoader.Variant<>(NativeConstraints.LINUX_X86_64,
               copyAndLoadNative("/linux_x86_64/velocity-cipher.so"), // Any local version
               "OpenSSL local (Linux x86_64)", NativeVelocityCipher.FACTORY),
