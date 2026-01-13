@@ -20,7 +20,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.9.0"
 }
 
-rootProject.name = "velocity"
+rootProject.name = "velocitynt_recast"
 
 sequenceOf(
     "api",

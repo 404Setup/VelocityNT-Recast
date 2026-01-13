@@ -26,7 +26,17 @@ tasks {
         }
     }
 
+    val log4jPluginData = "META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat"
+
     shadowJar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+        eachFile {
+            if (path == log4jPluginData) {
+                duplicatesStrategy = DuplicatesStrategy.INCLUDE
+            }
+        }
+
         transform(Log4j2PluginsCacheFileTransformer::class.java)
 
         // Exclude all the collection types we don"t intend to use

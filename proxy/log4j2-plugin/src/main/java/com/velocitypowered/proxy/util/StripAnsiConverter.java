@@ -69,8 +69,7 @@ public class StripAnsiConverter extends LogEventPatternConverter {
    */
   public static StripAnsiConverter newInstance(Configuration config, String[] options) {
     if (options.length != 1) {
-      LOGGER.error("Incorrect number of options on stripFormat. Expected 1 received "
-              + options.length);
+      LOGGER.error("Incorrect number of options on stripFormat. Expected 1 received {}", options.length);
       return null;
     }
     PatternParser parser = PatternLayout.createPatternParser(config);
