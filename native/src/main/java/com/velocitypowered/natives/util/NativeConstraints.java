@@ -27,6 +27,7 @@ import java.util.function.BooleanSupplier;
  */
 public class NativeConstraints {
   private static final boolean NATIVES_ENABLED = !Boolean.getBoolean("velocity.natives-disabled");
+  private static final boolean V4_NATIVE_ENABLED = !Boolean.getBoolean("velocity.v4-natives-disabled");
   private static final boolean IS_AMD64;
   private static final boolean IS_AARCH64;
   private static final boolean CAN_GET_MEMORYADDRESS;
@@ -76,8 +77,14 @@ public class NativeConstraints {
   static final BooleanSupplier WINDOWS_X86_64 = () -> NATIVE_BASE.getAsBoolean() && IS_WINDOWS
           && IS_AMD64;
 
+  static final BooleanSupplier WINDOWS_X86_64_V4 = () -> NATIVE_BASE.getAsBoolean() && IS_WINDOWS
+          && IS_AMD64 && V4_NATIVE_ENABLED;
+
   static final BooleanSupplier WINDOWS_AARCH64 = () -> NATIVE_BASE.getAsBoolean() && IS_WINDOWS
           && IS_AARCH64;
+
+  static final BooleanSupplier WINDOWS_AARCH64_V4 = () -> NATIVE_BASE.getAsBoolean() && IS_WINDOWS
+          && IS_AARCH64 && V4_NATIVE_ENABLED;
 
   static final BooleanSupplier LINUX_X86_64 = () -> NATIVE_BASE.getAsBoolean()
       && IS_LINUX && IS_AMD64 && !IS_MUSL_LIBC;
