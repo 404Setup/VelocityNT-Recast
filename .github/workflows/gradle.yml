@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -45,6 +45,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./proxy/build/libs/velocity-proxy-3.5.0-SNAPSHOT-all.jar
-          asset_name: velocity-proxy-3.5.0-SNAPSHOT.jar
+          asset_path: ./proxy/build/libs/velocity-proxy-3.6.0-SNAPSHOT-all.jar
+          asset_name: velocity-proxy-3.6.0-SNAPSHOT.jar
           asset_content_type: application/java-archive
