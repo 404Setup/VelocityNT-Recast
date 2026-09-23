@@ -20,6 +20,7 @@ package com.velocitypowered.natives.encryption;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.condition.OS.LINUX;
+import static org.junit.jupiter.api.condition.OS.WINDOWS;
 
 import com.velocitypowered.natives.util.Natives;
 import io.netty.buffer.ByteBuf;
@@ -48,7 +49,7 @@ class VelocityCipherTest {
   }
 
   @Test
-  @EnabledOnOs({LINUX})
+  @EnabledOnOs({LINUX, WINDOWS})
   void nativeIntegrityCheck() throws GeneralSecurityException {
     VelocityCipherFactory factory = Natives.cipher.get();
     if (factory == JavaVelocityCipher.FACTORY) {

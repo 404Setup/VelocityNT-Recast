@@ -1,11 +1,11 @@
 import com.github.jengelman.gradle.plugins.shadow.transformers.Log4j2PluginsCacheFileTransformer
-import io.papermc.fill.model.BuildChannel
+//import io.papermc.fill.model.BuildChannel
 
 plugins {
     application
     id("velocity-init-manifest")
     alias(libs.plugins.shadow)
-    alias(libs.plugins.fill)
+    //alias(libs.plugins.fill)
 }
 
 application {
@@ -20,7 +20,7 @@ tasks {
 
     jar {
         manifest {
-            attributes["Implementation-Title"] = "Velocity"
+            attributes["Implementation-Title"] = "VelocityNT Recast"
             attributes["Implementation-Vendor"] = "Velocity Contributors"
             attributes["Multi-Release"] = "true"
         }
@@ -65,7 +65,7 @@ tasks {
 }
 
 val projectVersion = version as String
-fill {
+/*fill {
     project("velocity")
 
     build {
@@ -84,7 +84,7 @@ fill {
             }
         }
     }
-}
+}*/
 
 dependencies {
     implementation(project(":velocity-api"))
