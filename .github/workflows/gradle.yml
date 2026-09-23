@@ -6,7 +6,7 @@ name: Java CI with Gradle
 on:
   push:
     branches:
-      - dev/3.0.0
+      - dev/4.0.0
 
 jobs:
   build:
